@@ -1,0 +1,91 @@
+<html>
+	<head>
+		<title>Rating App</title>
+		<style>
+			* { font-size:50px;font-family:Cambria; }
+			   body{ background-color:linen;}
+			h1 {background-color:black;color:white;width:70%;border-radius:20px; }
+			.btn{ background-color:red;color:white;margin-left:2%;border-radius:20px;}
+			.btn:hover { color:black; }
+		</style>	
+	</head>
+	<body>
+	<center>
+		<h1>Rating App</h1>
+		<form onsubmit="rating()">
+			<input type="number" 	placeholder="pls enter rating between 1 and 5"	id="num"		style= "width:800px;	" />
+			<br/><br/>
+			<input type="submit"		value="M1" 	class="btn" />
+			<input type="submit"		value="M2" 	class ="btn" />
+			<input type="submit"		value="M3" 	class ="btn" />
+			
+			<h2 id="msg" />
+			<script>
+				function rating()
+				{
+					event.preventDefault();	
+					let num=document.getElementById("num");
+					let msg=document.getElementById("msg");	
+					
+				
+					if(num.value==="")
+					{
+						alert("enter the value between 1 to 5");
+						msg.innerHTML=" ";
+						num.focus();
+						return;
+					}
+
+					let n = parseInt(num.value);
+					if((n<1) || (n>5))
+					{
+						alert("pls enter valid rating between 1 and 5");
+						msg.innerHTML=" ";
+						num.focus();
+						return;
+					}
+					let action=document.activeElement.value;
+					let ans=" ";
+					if(action==="M1")	
+					{
+						if(n===5)		ans="M1-->Excellent";
+						else if(n===4)	ans="M1-->Excellent";
+						else if(n===3)	ans="M1-->OK";
+						else if(n===2)	ans="M1-->OK";
+						else		ans="M1-->poor";
+						msg.innerHTML=ans;	
+					}
+					else if(action==="M2")
+					{
+						if((n===5) || (n===4))
+						ans="M2-->Excellent";
+			
+						else if((n===3) || (n===2))
+						ans="M2-->OK";
+				
+						else
+						ans="M2-->poor";
+						msg.innerHTML=ans;
+					}
+		
+					else if(action==="M3")
+					{	
+						switch(n)
+						{
+							case 1:	ans="M3-->poor";	break;
+							case 2:	ans="M3-->ok";	break;	
+							case 3:	ans="M3-->ok";	break;
+							case 4:	ans="M3-->excellent";										break;	
+							case 5:	ans="M3-->excellent";										break;
+						}	
+								
+						
+					}
+					msg.innerHTML=ans;
+					
+				}
+			</script>			
+		</form>
+	</center>
+	</body>
+</html>
